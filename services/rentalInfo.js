@@ -28,4 +28,5 @@ const store2TopRentals = function () {
 
 module.exports = {
   store1TopRentals,
+  store2TopRentals,
 };

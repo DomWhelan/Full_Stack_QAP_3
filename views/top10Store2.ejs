@@ -1,0 +1,25 @@
+<html lang="en">
+  <%- include ('./partials/head.ejs') %>
+  <body>
+    <%- include ('./partials/header.ejs') %>
+    <main>
+      <div><%- include ('./partials/nav.ejs') %></div>
+
+      <h1>Top 10</h1>
+      <table>
+        <th>Store 2 Top Rentals</th>
+        <tr>
+          <td>Film Title</td>
+          <td>Total Rental Return</td>
+        </tr>
+        <% if(top10.length > 0) { %> <% top10.forEach(film => { %>
+        <tr>
+          <td><%= film.title %></td>
+          <td>$<%= film.rental_total %></td>
+        </tr>
+        <% }) %> <% } %>
+      </table>
+    </main>
+    <%- include ('./partials/footer.ejs') %>
+  </body>
+</html>
