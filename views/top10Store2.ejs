@@ -5,13 +5,21 @@
     <main>
       <div><%- include ('./partials/nav.ejs') %></div>
 
-      <h1>Top 10</h1>
+      <h1>Lethbridge, Canada</h1>
       <table>
-        <th>Store 2 Top Rentals</th>
+        <th>SQL Video Top 10 Rentals</th>
         <tr>
           <td>Film Title</td>
           <td>Total Rental Return</td>
+          <td rowspan="20">
+            <img
+              src="https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bW92aWUlMjBzdG9yZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
+              alt="image"
+              height="240px"
+            />
+          </td>
         </tr>
+
         <% if(top10.length > 0) { %> <% top10.forEach(film => { %>
         <tr>
           <td><%= film.title %></td>

@@ -4,7 +4,12 @@
     <%- include ('./partials/header.ejs') %>
     <main>
       <div><%- include ('./partials/nav.ejs') %></div>
-      <p>Welcome to SQL Video</p>
+      <div>
+        <% if(customer.length > 0){ %> <%customer.forEach((row)=>{ %>
+        <span>Film Title: <%= row.title %> </span>
+        <span>Rental Date: <%= row.rental_date %> </span> <br />
+        <% }) %> <% } %>
+      </div>
     </main>
     <%- include ('./partials/footer.ejs') %>
   </body>

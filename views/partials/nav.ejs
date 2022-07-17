@@ -4,14 +4,20 @@
       <a href="http://localhost:3000/">Home</a>
     </li>
     <li>
-      <a href="http://localhost:3000/top10Store1"
+      <a href="http://localhost:3000/admin/top10Store1"
         >Check out our " Top 10 " rentals of store 1</a
       >
     </li>
     <li>
-      <a href="http://localhost:3000/top10Store2"
+      <a href="http://localhost:3000/admin/top10Store2"
         >Check out our " Top 10 " rentals of store 2</a
       >
     </li>
   </ul>
+  <h3>Enter you customer ID below for rental history (last 12 month)</h3>
+  <form action="customer" method="GET">
+    <label for="id">Customer ID</label>
+    <input type="text" name="id" value="id" required />
+    <input type="submit" value="submit" />
+  </form>
 </nav>
