@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 
+const moment = require("moment");
+
 global.DEBUG = true;
 
 app.set("view engine", "ejs");
@@ -12,20 +14,33 @@ app.listen(3000, () => {
 });
 
 app.get("/", (req, res) => {
+  if (DEBUG) console.log("Request Method: " + req.method);
+  if (DEBUG) console.log("Request URL: " + req.url);
   res.render("index", { title: "Home" });
 });
 
-const adminRouter = require("./routes/adminRouter");
+const ownerRouter = require("./routes/ownerRouter");
 
-app.use("/admin", adminRouter);
+app.use("/owner", ownerRouter);
 
-const { getRentalsByID } = require("./services/rentalInfo");
+const { getRentalsByID, getRentalsDue } = require("./services/rentalInfo");
 
 app.get("/customer", async (req, res) => {
+  if (DEBUG) console.log("Request Method: " + req.method);
+  if (DEBUG) console.log("Request URL: " + req.url);
   if (DEBUG) console.log("ID: " + req.query.id);
   let customer = await getRentalsByID(req.query.id);
-  if (DEBUG) console.log(customer);
   res.render("rentalsByID", { title: "Rental History", customer });
+});
+app.get("/rentalsDue", async (req, res) => {
+  if (DEBUG) console.log("Request Method: " + req.method);
+  if (DEBUG) console.log("Request URL: " + req.url);
+  let rentalsDue = await getRentalsDue();
+  res.render("rentalsDue", {
+    title: "Rentals Due for Return",
+    rentalsDue,
+    moment,
+  });
 });
 
 app.use((req, res) => {

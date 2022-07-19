@@ -1,0 +1,22 @@
+<html lang="en">
+  <%- include ('./partials/head.ejs') %>
+  <body>
+    <%- include ('./partials/header.ejs') %>
+    <main>
+      <div><%- include ('./partials/nav.ejs') %></div>
+      <div>
+        <% if(rentalsDue.length > 0){ %> <%rentalsDue.forEach((rental)=>{ %>
+        <span>Film Title: <%= rental.title %> </span>
+        <span
+          >Rental Date: <%= moment(rental.rental_date).format('DD-MMM-YYYY') %>
+        </span>
+        <span
+          >Return Date: <%= moment(rental.return_date).format('DD-MMM-YYYY') %>
+        </span>
+        <br />
+        <% }) %> <% } else {"There are no outstanding rentals"} %>
+      </div>
+    </main>
+    <%- include ('./partials/footer.ejs') %>
+  </body>
+</html>
