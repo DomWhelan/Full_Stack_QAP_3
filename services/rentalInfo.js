@@ -49,6 +49,8 @@ const getRentalsByID = function (id) {
   });
 };
 
+// Function accesses the "rentalsByCustomer" view from postgres database
+// Filter rentals with return dates after current date
 const getRentalsDue = function () {
   if (DEBUG) console.log("getRentalsDue()");
   return new Promise(function (resolve, reject) {

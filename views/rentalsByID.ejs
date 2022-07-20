@@ -5,9 +5,13 @@
     <main>
       <div><%- include ('./partials/nav.ejs') %></div>
       <div>
+        <h1>Hi name here is your rental history for the past 12 months</h1>
         <% if(customer.length > 0){ %> <%customer.forEach((row)=>{ %>
         <span>Film Title: <%= row.title %> </span>
-        <span>Rental Date: <%= row.rental_date %> </span> <br />
+        <span
+          >Rental Date: <%= moment(row.rental_date).format('DD-MMM-YYYY') %>
+        </span>
+        <br />
         <% }) %> <% } %>
       </div>
     </main>

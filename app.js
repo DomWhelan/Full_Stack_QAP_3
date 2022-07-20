@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
 
-const moment = require("moment");
+// Installed package to format time objects
+var moment = require("moment");
+app.locals.moment = moment;
 
 global.DEBUG = true;
 
@@ -15,7 +17,7 @@ app.listen(3000, () => {
 
 app.get("/", (req, res) => {
   if (DEBUG) console.log("Request Method: " + req.method);
-  if (DEBUG) console.log("Request URL: " + req.url);
+  if (DEBUG) console.log("Requested Home page");
   res.render("index", { title: "Home" });
 });
 
@@ -23,27 +25,17 @@ const ownerRouter = require("./routes/ownerRouter");
 
 app.use("/owner", ownerRouter);
 
-const { getRentalsByID, getRentalsDue } = require("./services/rentalInfo");
+const customerRouter = require("./routes/customerRouter");
 
-app.get("/customer", async (req, res) => {
-  if (DEBUG) console.log("Request Method: " + req.method);
-  if (DEBUG) console.log("Request URL: " + req.url);
-  if (DEBUG) console.log("ID: " + req.query.id);
-  let customer = await getRentalsByID(req.query.id);
-  res.render("rentalsByID", { title: "Rental History", customer });
-});
-app.get("/rentalsDue", async (req, res) => {
-  if (DEBUG) console.log("Request Method: " + req.method);
-  if (DEBUG) console.log("Request URL: " + req.url);
-  let rentalsDue = await getRentalsDue();
-  res.render("rentalsDue", {
-    title: "Rentals Due for Return",
-    rentalsDue,
-    moment,
-  });
-});
+app.use("/customer", customerRouter);
+
+const mgmtRouter = require("./routes/mgmtRouter");
+
+app.use("/mgmt", mgmtRouter);
 
 app.use((req, res) => {
   res.status(404);
   res.render("404", { title: "404 - ERROR" });
 });
+
+module.exports = moment;

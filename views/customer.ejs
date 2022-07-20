@@ -1,0 +1,17 @@
+<html lang="en">
+  <%- include ('./partials/head.ejs') %>
+  <body>
+    <%- include ('./partials/header.ejs') %>
+    <main>
+      <div id="nav"><%- include ('./partials/nav.ejs') %></div>
+      <h3>Login to Your SQL Video</h3>
+      <h3>Enter you customer ID below</h3>
+      <form action="id" method="GET">
+        <label for="id">Customer ID</label>
+        <input type="text" name="id" value="id" required />
+        <input type="submit" value="submit" />
+      </form>
+    </main>
+    <%- include ('./partials/footer.ejs') %>
+  </body>
+</html>
