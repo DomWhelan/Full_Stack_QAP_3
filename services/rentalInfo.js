@@ -37,7 +37,7 @@ const getRentalsByID = function (id) {
   if (DEBUG) console.log("getRentalsByID() " + id);
   return new Promise(function (resolve, reject) {
     const sql = `SELECT * FROM public."rentalsByCustomer"
-    WHERE customer_id = ${id} AND rental_date > (CURRENT_DATE - '1 year'::interval)`;
+    WHERE customer_id = ${id} AND rental_date > (CURRENT_DATE - '1 year'::interval) ORDER BY rental_date DESC`;
     db.query(sql, (err, result) => {
       if (err) {
         reject(err);

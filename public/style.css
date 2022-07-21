@@ -3,13 +3,26 @@ body {
   margin: 0%;
   box-sizing: border-box;
   list-style: none;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 header {
   background-color: rgba(0, 8, 255, 0.722);
   color: aliceblue;
   text-align: center;
+  font-size: 1.8rem;
+}
+
+header h1 {
+  letter-spacing: 0.3rem;
+  margin: 0%;
+}
+
+header h2 {
+  margin: 0%;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 300;
 }
 
 main,
@@ -30,6 +43,7 @@ nav ul {
 li {
   color: aliceblue;
   background-color: rgba(0, 8, 255, 0.722);
+  border: 2px solid rgba(0, 8, 255, 0.722);
   border-radius: 24%;
   padding: 1%;
 }
@@ -45,4 +59,17 @@ a {
 hr {
   border-width: 2px;
   border-color: rgba(0, 8, 255, 0.722);
+}
+
+table {
+  border-spacing: 20px 5px;
+}
+
+td {
+  margin: 2%;
+}
+
+th {
+  color: rgba(0, 8, 255, 0.722);
+  font-size: 1.5rem;
 }

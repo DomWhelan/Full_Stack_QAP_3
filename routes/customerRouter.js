@@ -16,7 +16,7 @@ router.get("/id", async (req, res) => {
   if (DEBUG) console.log("Requested rentalsByID page");
   if (DEBUG) console.log("ID: " + req.query.id);
   let customer = await getRentalsByID(req.query.id);
-  res.render("rentalsByID", { title: "Rental History", moment, customer });
+  res.render("rentalsByID", { title: "Rental History", customer });
 });
 
 module.exports = router;

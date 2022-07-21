@@ -5,14 +5,25 @@
     <main>
       <div><%- include ('./partials/nav.ejs') %></div>
       <div>
-        <h1>Hi name here is your rental history for the past 12 months</h1>
-        <% if(customer.length > 0){ %> <%customer.forEach((row)=>{ %>
-        <span>Film Title: <%= row.title %> </span>
-        <span
-          >Rental Date: <%= moment(row.rental_date).format('DD-MMM-YYYY') %>
-        </span>
-        <br />
-        <% }) %> <% } %>
+        <a href="http://localhost:3000/customer/">BACK</a>
+        <h3>
+          Hi <br />
+          '<%= customer[0].full_name %>' <br />
+          Here is your rental history for the past 12 months
+        </h3>
+        <table>
+          <th colspan="3"><%= customer[0].full_name %> Rental History</th>
+          <tr>
+            <td><strong> Film Title</strong></td>
+            <td><strong> Rental Date</strong></td>
+          </tr>
+          <% if(customer.length > 0){ %> <%customer.forEach((row)=>{ %>
+          <tr>
+            <td><%= row.title %></td>
+            <td><%= moment(row.rental_date).format('DD-MMM-YYYY') %></td>
+          </tr>
+          <% }) %> <% } %>
+        </table>
       </div>
     </main>
     <%- include ('./partials/footer.ejs') %>

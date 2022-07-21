@@ -1,7 +1,7 @@
 -- getRentalsByID() manipulating "rentalsByCustomer" view
 
 SELECT * FROM public."rentalsByCustomer"
-    WHERE customer_id = ${id} AND rental_date > (CURRENT_DATE - '1 year'::interval)
+    WHERE customer_id = ${id} AND rental_date > (CURRENT_DATE - '1 year'::interval) ORDER BY rental_date DESC
 
 -- getRentalsDue() manipulating "rentalsByCustomer" view
 
