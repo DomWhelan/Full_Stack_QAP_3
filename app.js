@@ -5,7 +5,7 @@ const app = express();
 var moment = require("moment");
 app.locals.moment = moment;
 
-global.DEBUG = true;
+global.DEBUG = false;
 
 app.set("view engine", "ejs");
 

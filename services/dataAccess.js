@@ -10,7 +10,7 @@ password = fs.readFileSync(
 );
 
 const pool = new Pool({
-  user: "postgres",
+  user: "dominic",
   host: "localhost",
   database: "dvdrental",
   password: `${password}`,

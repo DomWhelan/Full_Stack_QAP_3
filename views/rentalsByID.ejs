@@ -8,7 +8,7 @@
         <a href="http://localhost:3000/customer/">BACK</a>
         <h3>
           Hi <br />
-          '<%= customer[0].full_name %>' <br />
+          <% if(customer.length > 0){ %> '<%= customer[0].full_name %>' <br />
           Here is your rental history for the past 12 months
         </h3>
         <table>
@@ -17,12 +17,17 @@
             <td><strong> Film Title</strong></td>
             <td><strong> Rental Date</strong></td>
           </tr>
-          <% if(customer.length > 0){ %> <%customer.forEach((row)=>{ %>
+          <%customer.forEach((row)=>{ %>
           <tr>
             <td><%= row.title %></td>
             <td><%= moment(row.rental_date).format('DD-MMM-YYYY') %></td>
           </tr>
-          <% }) %> <% } %>
+          <% }) %> <% }else{ %>
+          <h3>
+            Oops Something went wrong... <br />
+            Customer ID was not found, Please try again
+          </h3>
+          <% } %>
         </table>
       </div>
     </main>

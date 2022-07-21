@@ -4,19 +4,21 @@
     <%- include ('./partials/header.ejs') %>
     <main>
       <div><%- include ('./partials/nav.ejs') %></div>
+      <a href="http://localhost:3000/mgmt/">BACK</a>
       <div>
         <table>
-          <% if(rentalsDue.length > 0){ %> <%rentalsDue.forEach((rental)=>{ %>
+          <% if(rentalsDue.length > 0){ %>
+          <th>Outstanding Returns</th>
           <tr>
-            <td>Film Title: <%= rental.title %></td>
-            <td>
-              Rental Date: <%= moment(rental.rental_date).format('DD-MMM-YYYY')
-              %>
-            </td>
-            <td>
-              Return Date: <%= moment(rental.return_date).format('DD-MMM-YYYY')
-              %>
-            </td>
+            <td>TITLE</td>
+            <td>RENTAL DATE</td>
+            <td>RETURN DATE</td>
+          </tr>
+          <% rentalsDue.forEach((rental)=>{ %>
+          <tr>
+            <td><%= rental.title %></td>
+            <td><%= moment(rental.rental_date).format('DD-MMM-YYYY') %></td>
+            <td><%= moment(rental.return_date).format('DD-MMM-YYYY') %></td>
           </tr>
           <% }) %> <% } else { %>
           <br />

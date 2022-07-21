@@ -40,7 +40,8 @@ const getRentalsByID = function (id) {
     WHERE customer_id = ${id} AND rental_date > (CURRENT_DATE - '1 year'::interval) ORDER BY rental_date DESC`;
     db.query(sql, (err, result) => {
       if (err) {
-        reject(err);
+        console.log(err);
+        reject("");
       } else {
         if (DEBUG) console.log(result);
         resolve(result.rows);
